@@ -2,8 +2,29 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import storage from "../lib/session";
+import Link from "next/link";
 
-const Home: NextPage = () => {
+
+export async function getServerSideProps(contex: any) {
+  const { req, res } = contex;
+  await new Promise((resolve, reject) => {
+    storage(req, res, function(){
+      resolve(req.session);
+    });
+  });
+  if (!req.session.isLoggedin) {
+    return { redirect: { destination: '/api/login', permanent: false } };
+  }
+  return {
+    props: {
+      user: req.session.passport.user.name,
+    },
+  };
+}
+
+
+const Home: NextPage = (props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,9 +33,24 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Link href="/api/logout" passHref>
+        <button
+          style={{
+            border: "1px solid black",
+            backgroundColor: "white",
+            borderRadius: "10px",
+            height: "50px",
+            width: "200px",
+            cursor: "pointer",
+          }}
+        >
+          Logout
+        </button>
+      </Link>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome `<code>{props.user}</code>` to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
