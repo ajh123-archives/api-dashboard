@@ -12,7 +12,8 @@ export default nextConnect()
     (req: NextApiRequest & { user: any }, res: NextApiResponse) => {
       if (res.session != null){
         res.session.destroy();
+        res.session.isLoggedIn = false;
       }
-      res.redirect("/");
+      res.redirect("https://minersonline.tk");
     }
   );

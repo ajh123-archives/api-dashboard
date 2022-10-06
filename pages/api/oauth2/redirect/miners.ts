@@ -11,7 +11,7 @@ export default nextConnect()
   (req: NextApiRequest & { user: any }, res: NextApiResponse) => {
     req.session.isLoggedin = true;
     req.session.save(function (err: any){
-      res.redirect("/");
+      res.redirect("/user/Dashboard");
     });
   }
 );
