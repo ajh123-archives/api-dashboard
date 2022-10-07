@@ -20,6 +20,6 @@
   "types": [
     "node",
   ], 
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/types/.d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "lib/types/.d.ts"],
   "exclude": ["node_modules"]
 }

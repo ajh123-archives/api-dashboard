@@ -1,5 +1,4 @@
 import * as React from 'react';
-import type { NextPage } from 'next'
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -11,19 +10,15 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
-import AddIcon from '@mui/icons-material/Add';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import Head from 'next/head'
 
 
 import AccountMenu from './User/AccountMenu';
 import ListMenu from './User/listItems';
-import Project from './User/Project';
-import Title from './User/Title';
 
 
 function Copyright(props: any) {
@@ -93,6 +88,8 @@ const mdTheme = createTheme();
 
 interface PageProps {
   children?: React.ReactNode;
+  data: any;
+  title: string;
 }
 
 export default function Page(props: PageProps) {
@@ -103,6 +100,9 @@ export default function Page(props: PageProps) {
 
   return (
     <ThemeProvider theme={mdTheme}>
+      <Head>
+        <title>{props.title}</title>
+      </Head>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -130,14 +130,14 @@ export default function Page(props: PageProps) {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Projects Dashboard
+              {props.title}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <AccountMenu data={{props}}/>
+            <AccountMenu data={props}/>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -154,7 +154,7 @@ export default function Page(props: PageProps) {
             </IconButton>
           </Toolbar>
           <Divider />
-          <ListMenu data={props.clients} />
+          <ListMenu data={props.data.clients} />
         </Drawer>
         <Box
           component="main"

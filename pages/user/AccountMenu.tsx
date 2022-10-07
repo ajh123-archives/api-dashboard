@@ -31,7 +31,7 @@ export default function AccountMenu(props: any) {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{props.data.props.user.name[0]}</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{props.data.data.user.name[0]}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -71,7 +71,7 @@ export default function AccountMenu(props: any) {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> {props.data.props.user.name}
+          <Avatar /> {props.data.data.user.name}
         </MenuItem>
         <Divider />
         <MenuItem>

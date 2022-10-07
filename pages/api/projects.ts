@@ -16,7 +16,6 @@ export default nextConnect()
 
         db.sequelize.sync().then(() => {
             console.log('Tables created successfully!');
-            console.log(req.session)
             if (req.session != null){
                 if (req.session.isLoggedin){
                     Project.findAll({
