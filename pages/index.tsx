@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps(contex: any) {
-  return { redirect: { destination: '/user/Dashboard', permanent: false } };
+  return { redirect: { destination: process.env.APP_BASE_URI+'/user/Dashboard', permanent: false } };
 }
 
 const Home: NextPage = (props) => {

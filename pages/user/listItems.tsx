@@ -14,7 +14,7 @@ export default function ListMenu(props: any) {
   return (
     <List component="nav">
       <React.Fragment>
-        <a href="/user/Dashboard">
+        <a href={process.env.APP_BASE_URI+"/user/Dashboard"}>
           <ListItemButton>
             <ListItemIcon>
               <DashboardIcon />
@@ -29,12 +29,14 @@ export default function ListMenu(props: any) {
           Projects
         </ListSubheader>
           {props.data.map((row: any) => (
-            <ListItemButton>
-            <ListItemIcon>
-              <AccountTreeIcon />
-            </ListItemIcon>
-            <ListItemText primary={row.name} />
-          </ListItemButton>
+            <a href={process.env.APP_BASE_URI+"/project/view?id="+row.client_id}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountTreeIcon />
+                </ListItemIcon>
+                <ListItemText primary={row.name} />
+              </ListItemButton>
+            </a>
           ))}
       </React.Fragment>
       <Divider sx={{ my: 1 }} />

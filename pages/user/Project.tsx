@@ -3,9 +3,6 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Title from './Title';
 
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
 
 export default function Project(project: any) {
   return (
@@ -15,10 +12,9 @@ export default function Project(project: any) {
         {project.project.row.name}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
-        {project.project.row.grant_types}
       </Typography>
       <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
+        <Link color="primary" href={process.env.APP_BASE_URI+"/project/view?id="+project.project.row.client_id}>
           View project
         </Link>
       </div>

@@ -81,7 +81,7 @@ export default function AccountMenu(props: any) {
           Settings
         </MenuItem>
         <MenuItem>
-          <a href="/api/logout">
+          <a href={process.env.APP_BASE_URI+"/api/logout"}>
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>

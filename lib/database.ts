@@ -30,13 +30,13 @@ export async function props(contex: any) {
         });
     });
     if (!req.session.isLoggedin) {
-        return { redirect: { destination: '/api/login', permanent: false } };
+        return { redirect: { destination: process.env.APP_BASE_URI+'/api/login', permanent: false } };
     }
   
     const axios = require('axios');
   
     return axios.get(
-        'http://localhost:3001/api/projects',
+        process.env.APP_BASE_URI+'/api/projects',
         {
             withCredentials: true,
             headers: {cookie: req.headers.cookie} 

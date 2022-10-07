@@ -9,6 +9,7 @@ declare global {
         DATABASE_PASSWORD: string,
         DATABASE_HOST: string,
         DATABASE: string,
+        APP_BASE_URI: string,
       }
     }
   }
