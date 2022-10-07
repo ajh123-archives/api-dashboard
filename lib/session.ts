@@ -12,7 +12,7 @@ const storage = session({
         httpOnly: true,
         maxAge: 1000 * 60
     },
-    name: "bank_data",
+    name: "data",
     resave: true,
     saveUninitialized: true,
 });

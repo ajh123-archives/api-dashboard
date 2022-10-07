@@ -1,4 +1,5 @@
 {
+  "module": "commonjs",
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -16,6 +17,9 @@
     "incremental": true,
     "typeRoots": ["./node_modules/@types", "./lib/types"]
   },
+  "types": [
+    "node",
+  ], 
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/types/.d.ts"],
   "exclude": ["node_modules"]
 }

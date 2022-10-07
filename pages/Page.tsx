@@ -19,12 +19,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-import AccountMenu from './AccountMenu';
-import ListMenu from './listItems';
-import Project from './Project';
-import Title from './Title';
 
-import {props} from "../../lib/database";
+import AccountMenu from './User/AccountMenu';
+import ListMenu from './User/listItems';
+import Project from './User/Project';
+import Title from './User/Title';
 
 
 function Copyright(props: any) {
@@ -92,13 +91,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-
-export async function getServerSideProps(contex: any) {
-  return props(contex)
+interface PageProps {
+  children?: React.ReactNode;
 }
 
-
-const DashboardContent: NextPage = (props) => {
+export default function Page(props: PageProps) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -173,41 +170,7 @@ const DashboardContent: NextPage = (props) => {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Projects */}
-              {props.clients.map((row) => (
-                <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Project project={{row}}/>
-                </Paper>
-              </Grid>
-              ))}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <React.Fragment>
-                    <Title>{""}</Title>
-                    <Typography component="p" variant="h6">
-                      Add project
-                    </Typography>
-                    <AddIcon style={{verticalAlign:"middle"}}/>
-                  </React.Fragment>
-                </Paper>
-              </Grid>
-            </Grid>
+            {props.children}
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
@@ -215,5 +178,3 @@ const DashboardContent: NextPage = (props) => {
     </ThemeProvider>
   );
 }
-
-export default DashboardContent;

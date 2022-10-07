@@ -13,7 +13,7 @@ passport.use(new OAuth2Strategy({
   tokenURL: 'https://minersonline.tk/api/auth/token.php',
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/api/oauth2/redirect/miners"
+  callbackURL: "http://localhost:3001/api/oauth2/redirect/miners"
 },
 function(accessToken: any, refreshToken: any, profile: any, cb: (arg0: null, arg1: any) => any) {
   try {

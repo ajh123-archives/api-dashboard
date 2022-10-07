@@ -5,6 +5,10 @@ declare global {
         CLIENT_ID: string;
         CLIENT_SECRET: string;
         SESSION_SECRET: string;
+        DATABASE_USERNAME: string,
+        DATABASE_PASSWORD: string,
+        DATABASE_HOST: string,
+        DATABASE: string,
       }
     }
   }
