@@ -11,13 +11,13 @@ export default nextConnect()
     .use(passport.initialize())
     .use(passport.session())
     .get(
-    (req: NextApiRequest & { user: any }, res: NextApiResponse) => {
+    (req: MyNextApi & { user: any }, res: NextApiResponse) => {
         db.connect()
 
         db.sequelize.sync().then(() => {
             console.log('Tables created successfully!');
             if (req.session != null){
-                if (req.session.isLoggedin){
+                if (req.session.isLoggedIn){
                     Project.findAll({
                         where: {
                           user_id: req.session.passport.user.uuid

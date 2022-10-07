@@ -29,7 +29,7 @@ export async function props(contex: any) {
             resolve(req.session);
         });
     });
-    if (!req.session.isLoggedin) {
+    if (!req.session.isLoggedIn) {
         return { redirect: { destination: process.env.APP_BASE_URI+'/api/login', permanent: false } };
     }
   

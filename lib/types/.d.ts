@@ -1,13 +1,19 @@
+import { NextApiResponse } from "next";
+
 export {};
 
-interface Session {
-    
-}
-
 declare global {
-    namespace Next {
-        interface NextApiResponse<> {
-            session: Session
+    interface MyNextApi extends NextApiResponse {
+        session: {
+            destroy: function,
+            save: function,
+            isLoggedIn: boolean,
+            passport: {
+                user: {
+                    uuid: string,
+                    name: string
+                }
+            }
         }
     }
 }
