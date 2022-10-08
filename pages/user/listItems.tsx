@@ -10,7 +10,22 @@ import Divider from '@mui/material/Divider';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import SaveIcon from '@mui/icons-material/Save';
 
-export default function ListMenu(props: any) {
+interface Client {
+  client_id: string,
+  client_secret: string,
+  redirect_uri: string,
+  grant_types: string|null,
+  scope: string|null,
+  user_id: string,
+  name: string,
+}
+
+interface ListMenuProps {
+  data: [Client]
+}
+
+
+export default function ListMenu(props: ListMenuProps) {
   return (
     <List component="nav">
       <React.Fragment>
@@ -28,7 +43,7 @@ export default function ListMenu(props: any) {
         <ListSubheader component="div" inset>
           Projects
         </ListSubheader>
-          {props.data.map((row: any) => (
+          {props.data.map((row: Client) => (
             <a href={process.env.APP_BASE_URI+"/project/view?id="+row.client_id}>
               <ListItemButton>
                 <ListItemIcon>

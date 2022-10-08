@@ -10,7 +10,18 @@ import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
-export default function AccountMenu(props: any) {
+interface AccountMenuProps {
+  data: {
+    data: {
+      user: {
+        name: string,
+      }
+    }
+    children?: React.ReactNode;
+  }
+}
+
+export default function AccountMenu(props: AccountMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

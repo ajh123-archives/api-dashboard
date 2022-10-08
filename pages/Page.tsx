@@ -86,9 +86,29 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
+interface Client {
+  client_id: string,
+  client_secret: string,
+  redirect_uri: string,
+  grant_types: string|null,
+  scope: string|null,
+  user_id: string,
+  name: string,
+}
+
+export interface PageData {
+  user: {
+    uuid: string;
+    email: string;
+    name: string;
+    lastLogin: string;
+  },
+  clients: [Client];
+}
+
 interface PageProps {
   children?: React.ReactNode;
-  data: any;
+  data: PageData;
   title: string;
 }
 

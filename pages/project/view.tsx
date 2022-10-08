@@ -4,15 +4,16 @@ import { useRouter } from 'next/router'
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Page from '../Page'
+import {PageData} from '../Page'
 
 import {props} from "../../lib/database";
 
 
-export async function getServerSideProps(contex: any) {
-  return props(contex)
+export async function getServerSideProps(contex: any): Promise<{ props: PageData; }>{
+    return await props(contex);
 }
-
-const ViewProject: NextPage = (props) => {
+  
+const ViewProject: NextPage = (props: PageData) => {
     const router = useRouter()
     const my_id = router.query;
 

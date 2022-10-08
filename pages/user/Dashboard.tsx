@@ -8,15 +8,16 @@ import Project from './Project';
 import Title from './Title';
 
 import Page from '../Page'
+import {PageData} from '../Page'
 
 import {props} from "../../lib/database";
 
 
-export async function getServerSideProps(contex: any) {
-  return props(contex)
+export async function getServerSideProps(contex: any): Promise<{ props: PageData; }>{
+  return await props(contex);
 }
 
-const DashboardContent: NextPage = (props) => {
+const DashboardContent: NextPage = (props: PageData) => {
   return (
     <Page data={props} title="Project Dashboard">
       <Grid container spacing={3}>
