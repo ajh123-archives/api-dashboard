@@ -7,8 +7,8 @@ const storage = session({
     store: new FileStore(fileStoreOptions),
     secret: process.env.SESSION_SECRET, 
     cookie: {
-        secure: process.env.NODE_ENV === 'production', // Prod is supposed to use https
-        sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax', // must be 'none' to enable cross-site delivery
+        secure: false,//process.env.NODE_ENV === 'production', // Prod is supposed to use https
+        sameSite: 'lax',//process.env.NODE_ENV === "production" ? 'none' : 'lax', // must be 'none' to enable cross-site delivery
         httpOnly: true,
         maxAge: 1000 * 60
     },

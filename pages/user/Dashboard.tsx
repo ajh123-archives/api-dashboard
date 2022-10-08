@@ -4,11 +4,11 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import AddIcon from '@mui/icons-material/Add';
-import Project from './Project';
-import Title from './Title';
+import Project from '../../lib/objects/Project';
+import Title from '../../lib/objects/Title';
 
-import Page from '../Page'
-import {PageData} from '../Page'
+import Page from '../../lib/objects/Page'
+import {PageData} from '../../lib/objects/Page'
 
 import {props} from "../../lib/database";
 

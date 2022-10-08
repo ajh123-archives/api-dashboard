@@ -3,8 +3,8 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import Page from '../Page'
-import {PageData} from '../Page'
+import Page from '../../lib/objects/Page'
+import {PageData} from '../../lib/objects/Page'
 
 import {props} from "../../lib/database";
 

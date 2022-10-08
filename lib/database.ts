@@ -34,12 +34,14 @@ export async function props(contex: any) {
     }
   
     const axios = require('axios');
-  
     return axios.get(
         process.env.APP_BASE_URI+'/api/projects',
         {
-            withCredentials: true,
-            headers: {cookie: req.headers.cookie} 
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+                cookie: req.headers.cookie
+            }
         }
     ).then(function (response: any){
         return {
