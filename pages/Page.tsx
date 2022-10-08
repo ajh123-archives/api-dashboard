@@ -17,8 +17,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Head from 'next/head'
 
 
-import AccountMenu from './User/AccountMenu';
-import ListMenu from './User/ListItems';
+import AccountMenu from './user/AccountMenu';
+import ListMenu from './user/ListItems';
 
 
 function Copyright(props: any) {
